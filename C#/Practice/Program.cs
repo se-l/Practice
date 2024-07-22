@@ -41,7 +41,7 @@ namespace Practice
 
             PracticeDelegates();
 
-            StructCheck();
+            ReferenceVsValue.Run();
 
             Console.WriteLine(string.Join(",", Enumerable.Repeat(4, 4).ToArray()));
 
@@ -53,15 +53,17 @@ namespace Practice
 
             Tuple<int, string> tuple = new(1, "sdf");
 
-            string emailPattern = @"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$";
-            // Create a Regex object using the email pattern
-            Regex emailRegex = new Regex(emailPattern);
-            // Test the regular expression against some email addresses
-            Console.WriteLine(emailRegex.IsMatch("example@example.com")); // Output: true
+            Miscellaneous.TryRegex();
 
             int[] arr2 = new int[3];
             arr2[0] = 1;
             Console.WriteLine($"Array: {string.Join(",", arr2)}");
+
+            FactoryPattern.Client.Run();
+
+            MyExtensions.Run();
+
+            Events.Run();
         }
 
         delegate int MyDelegate(int a, int b);
@@ -71,53 +73,18 @@ namespace Practice
             MyDelegate myDelegate = (a, b) => a + b;
             Console.WriteLine($"Delegate: {myDelegate(1, 2)}");
         }
+    }
 
-        public struct MyStruct
+    public static class Miscellaneous
+    {
+        public static void TryRegex()
         {
-            public int MyInt { get; set; }
-            public string MyStr { get; set; }
-            public void MyMethod()
-            {
-                Console.WriteLine("MyStruct.MyMethod()");
-            }
+            string emailPattern = @"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$";
+            // Create a Regex object using the email pattern
+            Regex emailRegex = new Regex(emailPattern);
+            // Test the regular expression against some email addresses
+            Console.WriteLine(emailRegex.IsMatch("example@example.com")); // Output: true
         }
-
-        public static void LogVarAddress(object obj)
-        {
-            Console.WriteLine($"LogVarAddress: Object address: {obj.GetHashCode()}");
-        }
-
-        public static void StructCheck()
-        {
-            MyStruct a = new () { MyInt=4, MyStr="sdf"};
-            a.MyMethod();
-            Console.WriteLine($"Struct address a: {a.GetHashCode()}");
-            LogVarAddress(a);
-            MyStruct b;
-            b = a;
-            Console.WriteLine($"Struct b address: {b.GetHashCode()}");
-
-            a.MyInt = 5;
-            Console.WriteLine($"Struct a.MyInt: {a.MyInt}");
-            Console.WriteLine($"Struct address a: {a.GetHashCode()}");
-            Console.WriteLine($"Struct b address: {b.GetHashCode()}");
-            Console.WriteLine($"Struct b.MyInt: {b.MyInt}");
-            Console.WriteLine($"Struct address a: {a.GetHashCode()}");
-            Console.WriteLine($"Struct b address: {b.GetHashCode()}");
-        }
-
-        // Access Modifiers:
-        // public
-        // private
-        // protected
-        // internal
-        // protected internal - protected OR internal
-        // private protected - private OR protected
-        // sealed
-
-        // abstract
-        // virtual
-        // static
     }
 
     public class MyClass

@@ -1,4 +1,9 @@
-﻿public class BaseClass
+﻿public interface IDerivedInterface
+{
+    void DoSomething();
+}
+
+public class BaseClass: IDerivedInterface
 {
     public int MyInt { get; set; }
     public virtual void DoSomething()
@@ -37,7 +42,7 @@ public class DerivedClass : BaseClass
     // }
 }
 
-public class ThirdClass : DerivedClass
+public class ThirdClass : DerivedClass, IDerivedInterface  // inhterits and implements
 {
     // The following line will not compile, as DoSomething is sealed and cannot be overridden
     // public override void DoSomething()
