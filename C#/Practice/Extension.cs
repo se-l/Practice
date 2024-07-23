@@ -1,6 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-
-namespace Practice
+﻿namespace Practice
 { 
     /// <summary>
     /// Procedural logic disguised as object oriented programming making code easier to read though, but not to be used execessively.

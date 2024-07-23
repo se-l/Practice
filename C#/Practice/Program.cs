@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using Practice.Algos;
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Text.RegularExpressions;
@@ -14,6 +15,16 @@ namespace Practice
     {
         static void Main(string[] args)
         {
+            // Alogs
+            FuzzBuzz.FizzBuzz();
+            Console.WriteLine($"IsPalindrome racecar: {Palindrome.IsPalindrome("racecar")}");
+            Console.WriteLine($"IsPalindrome raeecar: {Palindrome.IsPalindrome("raeecar")}");
+
+            Fibonacci.PrintFibonacciSequence(20);
+            Console.WriteLine($"CalcFibonacciClosures(20): {Fibonacci.CalcFibonacciClosures(19)}");
+
+            Closure.ClosureExample();
+
             Console.WriteLine("Hello, World!");
             Console.WriteLine($"MyClass int: {new MyClass(2).MyInt}");
             Console.WriteLine($"MyyRecord: {new MyRecord()}");
@@ -64,6 +75,12 @@ namespace Practice
             MyExtensions.Run();
 
             Events.Run();
+
+            MultiThreadedParallelism.RunThreadPoolExample();
+            MultiThreadedParallelism.RunParralelExample();
+            MultiThreadedParallelism.StartCPUBoundTask();
+
+            AsyncConcurrency.RunAsyncExamples();
         }
 
         delegate int MyDelegate(int a, int b);
